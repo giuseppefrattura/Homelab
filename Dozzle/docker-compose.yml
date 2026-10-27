@@ -1,0 +1,16 @@
+services:
+  dozzle:
+    image: amir20/dozzle:latest
+    container_name: dozzle
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - dozzle_data:/data
+    ports:
+      - "9999:8080"
+    environment:
+      DOZZLE_ENABLE_ACTIONS: "true"
+      DOZZLE_ENABLE_SHELL: "true"
+    restart: unless-stopped
+
+volumes:
+  dozzle_data:
